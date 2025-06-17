@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 | 博客平台</title>
+    <!-- 加载Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 加载Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 加载Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 加载自定义Tailwind配置 -->
+    <script src="js/tailwind.config.js"></script>
+    <!-- 加载自定义样式 -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-light-bg text-light-text font-inter antialiased dark:bg-dark dark:text-light">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-screen flex overflow-hidden">
+        <!-- 侧边栏 - 内嵌内容 -->
+        <aside class="hidden md:flex md:flex-col w-64 border-r border-light-border dark:border-dark-lighter bg-light-bg dark:bg-dark flex-shrink-0">
+            <div class="p-4 flex items-center justify-center md:justify-start">
+                <div class="text-secondary text-2xl">
+                    <i class="fa fa-rss"></i>
+                </div>
+            </div>
+            <nav class="flex-1 px-2 py-4 space-y-1 overflow-y-auto scrollbar-hide">
+                <a href="index.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
+                    <i class="fa fa-home text-xl w-8 text-gray-500 dark:text-light-dark hover:text-secondary"></i>
+                    <span class="font-medium">首页</span>
+                </a>
+                <a href="explore.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
+                    <i class="fa fa-hashtag text-xl w-8 text-gray-500 dark:text-light-dark hover:text-secondary"></i>
+                    <span class="font-medium">探索</span>
+                </a>
+                <a href="profile.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full bg-gray-100 dark:bg-dark-lighter">
+                    <i class="fa fa-user text-xl w-8 text-secondary"></i>
+                    <span class="font-medium">个人资料</span>
+                </a>
+            </nav>
+            <div class="p-4">
+                <button class="w-full bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-full">
+                    <span class="hidden md:inline">发布文章</span>
+                    <i class="fa fa-pencil md:hidden"></i>
+                </button>
+            </div>
+            <div class="p-4 mt-auto">
+                <a href="profile.html" class="flex items-center space-x-3 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
+                    <img src="https://picsum.photos/200/200?random=1" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium truncate">张三</p>
+                        <p class="text-xs text-gray-500 dark:text-light-darker truncate">@zhangsan</p>
+                    </div>
+                    <i class="fa fa-ellipsis-h text-gray-500 dark:text-light-darker"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- 个人资料内容区 -->
+        <main class="flex-1 overflow-y-auto scrollbar-hide">
+            <!-- 个人资料头部 -->
+            <div class="bg-gray-200 dark:bg-dark-light relative">
+                <div class="h-48 md:h-64 bg-gray-300 dark:bg-dark-lighter overflow-hidden">
+                    <img src="https://picsum.photos/1200/400?random=30" alt="封面图" class="w-full h-full object-cover">
+                </div>
+                <div class="px-4 md:px-6 pb-4">
+                    <div class="flex justify-between items-end">
+                        <div class="mt-[-50px]">
+                            <img src="https://picsum.photos/200/200?random=1" alt="个人头像" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-light-bg dark:border-dark">
+                        </div>
+                        <button class="bg-secondary hover:bg-secondary/90 text-white font-medium py-2 px-4 rounded-full">
+                            编辑资料
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <h1 class="text-2xl font-bold">张三</h1>
+                        <p class="text-gray-500 dark:text-light-darker">@zhangsan</p>
+                        <p class="mt-2">Web开发者 | 热衷于分享前端技术和开发经验</p>
+                        <div class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                            <div class="flex items-center">
+                                <span class="font-medium">128</span>
+                                <span class="text-gray-500 dark:text-light-darker ml-1">关注</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-medium">563</span>
+                                <span class="text-gray-500 dark:text-light-darker ml-1">粉丝</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-medium">245</span>
+                                <span class="text-gray-500 dark:text-light-darker ml-1">文章</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导航选项卡 -->
+            <div class="border-b border-light-border dark:border-dark-lighter">
+                <div class="flex overflow-x-auto scrollbar-hide">
+                    <button class="px-6 py-4 font-medium text-secondary border-b-2 border-secondary">
+                        文章
+                    </button>
+                    <button class="px-6 py-4 font-medium text-gray-500 dark:text-light-darker hover:text-light-text dark:hover:text-light">
+                        收藏
+                    </button>
+                    <button class="px-6 py-4 font-medium text-gray-500 dark:text-light-darker hover:text-light-text dark:hover:text-light">
+                        关注
+                    </button>
+                    <button class="px-6 py-4 font-medium text-gray-500 dark:text-light-darker hover:text-light-text dark:hover:text-light">
+                        粉丝
+                    </button>
+                </div>
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="divide-y divide-light-border dark:divide-dark-lighter">
+                <!-- 文章1 -->
+                <article class="p-4 hover:bg-gray-50 dark:hover:bg-dark-light/50 card-hover">
+                    <div class="flex space-x-3">
+                        <img src="https://picsum.photos/200/200?random=1" alt="张三" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <a href="#" class="font-medium hover:underline">张三</a>
+                                    <span class="text-gray-500 dark:text-light-darker">@zhangsan</span>
+                                    <span class="text-gray-500 dark:text-light-darker">· 3天前</span>
+                                </div>
+                                <button class="text-gray-500 dark:text-light-darker hover:text-gray-700 dark:hover:text-light">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            <p class="mt-1 text-light-text dark:text-light">深入理解JavaScript的异步编程模型，从回调到Promise再到Async/Await，一步步解析。</p>
+                            <div class="mt-3 rounded-xl overflow-hidden border border-light-border dark:border-dark-lighter hover-scale">
+                                <img src="https://picsum.photos/800/400?random=12" alt="JavaScript异步编程" class="w-full h-auto">
+                                <div class="p-3 bg-gray-100 dark:bg-dark-lighter">
+                                    <h3 class="font-medium">JavaScript异步编程全解析</h3>
+                                    <p class="text-sm text-gray-500 dark:text-light-darker mt-1">从回调地狱到优雅的Async/Await，JavaScript异步编程的演进</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span class="text-sm">42</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-success">
+                                    <i class="fa fa-retweet"></i>
+                                    <span class="text-sm">87</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-danger">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span class="text-sm">215</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>

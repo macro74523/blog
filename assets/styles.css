@@ -1,0 +1,29 @@
+/* 自定义样式 */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hover-scale {
+    transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+.card-hover {
+    transition: all 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+
+.dark .card-hover:hover {
+    background-color: rgba(255,255,255,0.03);
+}

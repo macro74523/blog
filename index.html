@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客 | 微博客平台</title>
+    <!-- 加载Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 加载Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 加载Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 加载自定义Tailwind配置 -->
+    <script src="assets/tailwind.config.js"></script>
+    <!-- 加载自定义样式 -->
+    <link href="assets/styles.css" rel="stylesheet">
+</head>
+<body class="bg-light-bg text-light-text font-inter antialiased dark:bg-dark dark:text-light">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-screen flex overflow-hidden">
+        <!-- 侧边栏占位符 -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- 主内容区 - 移除重复的main标签 -->
+        <main class="flex-1 overflow-y-auto scrollbar-hide">
+            <!-- 顶部导航栏 - 包含暗黑模式切换按钮 -->
+            <div class="sticky top-0 z-10 bg-light-bg dark:bg-dark border-b border-light-border dark:border-dark-lighter">
+                <div class="px-4 py-3 flex items-center justify-between">
+                    <h2 class="text-xl font-bold">首页</h2>
+                    
+                    <!-- 暗黑模式切换按钮 -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter text-gray-500 dark:text-light-darker transition-colors">
+                        <i id="theme-icon" class="fa fa-moon-o"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 发布表单 -->
+            <div class="p-4 border-b border-light-border dark:border-dark-lighter">
+                <div class="flex space-x-3">
+                    <img src="https://picsum.photos/200/200?random=1" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                    <div class="flex-1">
+                        <div class="mb-4">
+                            <textarea placeholder="有什么新鲜事？" class="w-full bg-transparent border-none focus:outline-none text-light-text dark:text-light resize-none min-h-[60px]"></textarea>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <button class="p-2 text-secondary hover:bg-secondary/10 rounded-full">
+                                    <i class="fa fa-image"></i>
+                                </button>
+                                <button class="p-2 text-secondary hover:bg-secondary/10 rounded-full">
+                                    <i class="fa fa-video-camera"></i>
+                                </button>
+                                <button class="p-2 text-secondary hover:bg-secondary/10 rounded-full">
+                                    <i class="fa fa-smile-o"></i>
+                                </button>
+                                <button class="p-2 text-secondary hover:bg-secondary/10 rounded-full">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                            <button class="bg-secondary hover:bg-secondary/90 text-white font-medium py-2 px-5 rounded-full">
+                                发布
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="divide-y divide-light-border dark:divide-dark-lighter">
+                <!-- 文章1 -->
+                <article class="p-4 hover:bg-gray-50 dark:hover:bg-dark-light/50 card-hover">
+                    <div class="flex space-x-3">
+                        <img src="https://picsum.photos/200/200?random=2" alt="李四" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <a href="#" class="font-medium hover:underline">李四</a>
+                                    <span class="text-gray-500 dark:text-light-darker">@lisi</span>
+                                    <span class="text-gray-500 dark:text-light-darker">· 2小时前</span>
+                                </div>
+                                <button class="text-gray-500 dark:text-light-darker hover:text-gray-700 dark:hover:text-light">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            <p class="mt-1 text-light-text dark:text-light">刚刚完成了关于AI在Web开发中未来发展的最新博客文章。可能性是无限的！🚀</p>
+                            <div class="mt-3 rounded-xl overflow-hidden border border-light-border dark:border-dark-lighter hover-scale">
+                                <img src="https://picsum.photos/800/400?random=10" alt="AI在Web开发中的应用" class="w-full h-auto">
+                                <div class="p-3 bg-gray-100 dark:bg-dark-lighter">
+                                    <h3 class="font-medium">AI在Web开发中的未来</h3>
+                                    <p class="text-sm text-gray-500 dark:text-light-darker mt-1">探索人工智能如何改变我们构建网站和应用程序的方式。</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span class="text-sm">12</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-success">
+                                    <i class="fa fa-retweet"></i>
+                                    <span class="text-sm">28</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-danger">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span class="text-sm">94</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 加载更多按钮 -->
+                <div class="p-4 flex justify-center">
+                    <button class="text-secondary hover:text-secondary/80 font-medium">
+                        显示更多
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧边栏 -->
+        <aside class="hidden lg:flex lg:flex-col w-80 border-l border-light-border dark:border-dark-lighter bg-light-bg dark:bg-dark flex-shrink-0">
+            <div class="p-4">
+                <div class="relative">
+                    <input type="text" placeholder="搜索博客" class="w-full bg-gray-100 dark:bg-dark-lighter text-light-text dark:text-light pl-10 pr-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <i class="fa fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-light-darker"></i>
+                </div>
+            </div>
+
+            <!-- 热门话题 -->
+            <div class="p-4">
+                <div class="bg-gray-100 dark:bg-dark-light rounded-2xl overflow-hidden">
+                    <div class="p-4 border-b border-light-border dark:border-dark-lighter">
+                        <h3 class="text-xl font-bold">热门话题</h3>
+                    </div>
+                    <div class="divide-y divide-light-border dark:divide-dark-lighter">
+                        <div class="p-4 hover:bg-gray-200 dark:hover:bg-dark-lighter cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-light-darker">科技 · 热门</p>
+                                    <h4 class="font-medium mt-1">WebAssembly</h4>
+                                    <p class="text-xs text-gray-500 dark:text-light-darker mt-1">12.4K 帖子</p>
+                                </div>
+                                <button class="text-gray-500 dark:text-light-darker hover:text-gray-700 dark:hover:text-light">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4 hover:bg-gray-200 dark:hover:bg-dark-lighter cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-light-darker">设计 · 热门</p>
+                                    <h4 class="font-medium mt-1">暗黑模式UI</h4>
+                                    <p class="text-xs text-gray-500 dark:text-light-darker mt-1">8.9K 帖子</p>
+                                </div>
+                                <button class="text-gray-500 dark:text-light-darker hover:text-gray-700 dark:hover:text-light">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <button class="text-secondary hover:text-secondary/80 text-sm font-medium">
+                            显示更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 页脚 - 内嵌内容 -->
+            <div class="mt-auto p-4 text-sm text-gray-500 dark:text-light-darker">
+                <div class="flex flex-wrap gap-x-4 gap-y-2">
+                    <a href="#" class="hover:underline">关于</a>
+                    <a href="#" class="hover:underline">帮助中心</a>
+                    <a href="#" class="hover:underline">服务条款</a>
+                    <a href="#" class="hover:underline">隐私政策</a>
+                </div>
+                <div class="mt-3">
+                    <span>&copy; 2025 博客, Inc.</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 移动端底部导航占位符 -->
+        <div id="bottom-nav-placeholder"></div>
+    </div>
+
+    <!-- 加载自定义JavaScript -->
+    <script src="assets/main.js"></script> <!-- 统一路径为assets/ -->
+    <script>
+       // 动态加载侧边栏
+fetch('components/sidebar.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('sidebar-placeholder').innerHTML = data;
+    setActivePage();
+  })
+  .catch(error => {
+    console.error('Failed to load sidebar:', error);
+    const placeholder = document.getElementById('sidebar-placeholder');
+    placeholder.innerHTML = `
+      <div class="p-4 text-red-500">
+        <i class="fa fa-exclamation-triangle mr-2"></i>
+        侧边栏加载失败: ${error.message}
+        <p class="text-sm mt-2">请检查components/sidebar.html文件是否存在</p>
+      </div>
+    `;
+  });
+
+// 动态加载底部导航
+fetch('components/bottom-nav.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('bottom-nav-placeholder').innerHTML = data;
+    setActivePage();
+  })
+  .catch(error => {
+    console.error('Failed to load bottom nav:', error);
+    const placeholder = document.getElementById('bottom-nav-placeholder');
+    placeholder.innerHTML = `
+      <div class="fixed bottom-0 left-0 right-0 p-4 bg-red-500 text-white text-center">
+        底部导航加载失败: ${error.message}
+      </div>
+    `;
+  });
+    </script>
+</body>
+</html>
