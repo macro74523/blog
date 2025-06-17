@@ -17,44 +17,17 @@
 </head>
 <body class="bg-light-bg text-light-text font-inter antialiased dark:bg-dark dark:text-light">
     <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-screen flex overflow-hidden">
-        <!-- 侧边栏 - 内嵌内容 -->
-        <aside class="hidden md:flex md:flex-col w-64 border-r border-light-border dark:border-dark-lighter bg-light-bg dark:bg-dark flex-shrink-0">
-            <div class="p-4 flex items-center justify-center md:justify-start">
-                <div class="text-secondary text-2xl">
-                 <i class="fa fa-book"></i>
-                </div>
-            </div>
-            <nav class="flex-1 px-2 py-4 space-y-1 overflow-y-auto scrollbar-hide">
-                <a href="index.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
-                    <i class="fa fa-home text-xl w-8 text-secondary"></i>
-                    <span class="font-medium">首页</span>
-                </a>
-                <a href="profile.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
-                    <i class="fa fa-hashtag text-xl w-8 text-gray-500 dark:text-light-dark hover:text-secondary"></i>
-                    <span class="font-medium">探索</span>
-                </a>
-                <a href="profile.html" class="flex items-center px-4 py-3 text-light-text dark:text-light rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
-                    <i class="fa fa-user text-xl w-8 text-gray-500 dark:text-light-dark hover:text-secondary"></i>
-                    <span class="font-medium">个人资料</span>
-                </a>
-            </nav>
-            <div class="p-4">
-                <button class="w-full bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-full">
-                    <span class="hidden md:inline">发布文章</span>
-                    <i class="fa fa-pencil md:hidden"></i>
-                </button>
-            </div>
-            <div class="p-4 mt-auto">
-                <a href="profile.html" class="flex items-center space-x-3 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
-                    <img src="https://picsum.photos/200/200?random=1" alt="Profile" class="w-10 h-10 rounded-full object-cover">
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium truncate">张三</p>
-                        <p class="text-xs text-gray-500 dark:text-light-darker truncate">@zhangsan</p>
-                    </div>
-                    <i class="fa fa-ellipsis-h text-gray-500 dark:text-light-darker"></i>
-                </a>
-            </div>
-        </aside>
+        <!-- 侧边栏占位符 -->
+       <!-- index.html 相关部分 -->
+<div id="sidebar-container"></div>
+
+<script>
+    fetch('components/sidebar.html')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('sidebar-container').innerHTML = html;
+        });
+</script>
 
         <!-- 主内容区 -->
         <main class="flex-1 overflow-y-auto scrollbar-hide">
@@ -238,5 +211,16 @@
 
     <!-- 加载自定义JavaScript -->
     <script src="assets/main.js"></script>
+    <script>
+        // 动态设置iframe高度
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarFrame = document.querySelector('iframe');
+            if (sidebarFrame) {
+                sidebarFrame.style.height = window.innerHeight + 'px';
+            }
+            
+            // 暗黑模式切换逻辑...
+        });
+    </script>
 </body>
 </html>
