@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张三 | 博客平台</title>
+    <title>博客 | 微博客平台</title>
     <!-- 加载Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 加载Font Awesome图标 -->
@@ -11,10 +12,33 @@
     <!-- 加载Google字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- 加载自定义Tailwind配置 -->
-    <script src="js/tailwind.config.js"></script>
+    <script src="assets/tailwind.config.js"></script>
     <!-- 加载自定义样式 -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="assets/styles.css" rel="stylesheet">
+    <style>
+        /* 添加动画效果 */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        /* 添加渐变背景 */
+        .bg-gradient {
+            background: linear-gradient(to bottom, #e2e8f0, #f1f5f9);
+            background: linear-gradient(to bottom, #1a202c, #2d3748);
+        }
+
+        /* 添加阴影效果 */
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
+
 <body class="bg-light-bg text-light-text font-inter antialiased dark:bg-dark dark:text-light">
     <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-screen flex overflow-hidden">
         <!-- 侧边栏 - 内嵌内容 -->
@@ -56,10 +80,37 @@
             </div>
         </aside>
 
-        <!-- 个人资料内容区 -->
+        <!-- 主内容区 -->
         <main class="flex-1 overflow-y-auto scrollbar-hide">
+            <!-- 顶部导航栏 -->
+            <div class="sticky top-0 z-10 bg-light-bg dark:bg-dark border-b border-light-border dark:border-dark-lighter">
+                <div class="px-4 py-3 flex items-center justify-between">
+                    <!-- 页面标题 -->
+                    <h2 class="text-xl font-bold">个人资料</h2>
+
+                    <!-- 功能按钮区 -->
+                    <div class="flex items-center space-x-2">
+                        <!-- 搜索按钮 -->
+                        <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter text-gray-500 dark:text-light-darker transition-colors">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                        <!-- 通知按钮 -->
+                        <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter text-gray-500 dark:text-light-darker transition-colors relative">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full"></span>
+                        </button>
+
+                        <!-- 暗黑模式切换按钮 - 优化位置 -->
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter text-gray-500 dark:text-light-darker transition-colors transform hover:scale-110 transition-transform duration-200">
+                            <i id="theme-icon" class="fa fa-moon-o"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- 个人资料头部 -->
-            <div class="bg-gray-200 dark:bg-dark-light relative">
+            <div class="bg-gradient relative">
                 <div class="h-48 md:h-64 bg-gray-300 dark:bg-dark-lighter overflow-hidden">
                     <img src="https://picsum.photos/1200/400?random=30" alt="封面图" class="w-full h-full object-cover">
                 </div>
@@ -76,6 +127,7 @@
                         <h1 class="text-2xl font-bold">张三</h1>
                         <p class="text-gray-500 dark:text-light-darker">@zhangsan</p>
                         <p class="mt-2">Web开发者 | 热衷于分享前端技术和开发经验</p>
+                        <p class="mt-2 text-gray-500 dark:text-light-darker">个人简介：热爱编程，喜欢探索新技术，致力于打造优秀的前端应用。</p>
                         <div class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
                             <div class="flex items-center">
                                 <span class="font-medium">128</span>
@@ -89,6 +141,17 @@
                                 <span class="font-medium">245</span>
                                 <span class="text-gray-500 dark:text-light-darker ml-1">文章</span>
                             </div>
+                        </div>
+                        <div class="mt-4 flex space-x-4">
+                            <a href="#" class="text-gray-500 dark:text-light-darker hover:text-secondary">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 dark:text-light-darker hover:text-secondary">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 dark:text-light-darker hover:text-secondary">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +178,7 @@
             <!-- 文章列表 -->
             <div class="divide-y divide-light-border dark:divide-dark-lighter">
                 <!-- 文章1 -->
-                <article class="p-4 hover:bg-gray-50 dark:hover:bg-dark-light/50 card-hover">
+                <article class="p-4 hover:bg-gray-50 dark:hover:bg-dark-light/50 card-hover card-shadow">
                     <div class="flex space-x-3">
                         <img src="https://picsum.photos/200/200?random=1" alt="张三" class="w-10 h-10 rounded-full object-cover">
                         <div class="flex-1">
@@ -157,3 +220,117 @@
                         </div>
                     </div>
                 </article>
+
+                <!-- 文章2 -->
+                <article class="p-4 hover:bg-gray-50 dark:hover:bg-dark-light/50 card-hover card-shadow">
+                    <div class="flex space-x-3">
+                        <img src="https://picsum.photos/200/200?random=1" alt="张三" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <a href="#" class="font-medium hover:underline">张三</a>
+                                    <span class="text-gray-500 dark:text-light-darker">@zhangsan</span>
+                                    <span class="text-gray-500 dark:text-light-darker">· 1周前</span>
+                                </div>
+                                <button class="text-gray-500 dark:text-light-darker hover:text-gray-700 dark:hover:text-light">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            <p class="mt-1 text-light-text dark:text-light">介绍Vue.js的组件化开发，如何提高代码的复用性和可维护性。</p>
+                            <div class="mt-3 rounded-xl overflow-hidden border border-light-border dark:border-dark-lighter hover-scale">
+                                <img src="https://picsum.photos/800/400?random=22" alt="Vue.js组件化开发" class="w-full h-auto">
+                                <div class="p-3 bg-gray-100 dark:bg-dark-lighter">
+                                    <h3 class="font-medium">Vue.js组件化开发实战</h3>
+                                    <p class="text-sm text-gray-500 dark:text-light-darker mt-1">掌握Vue.js组件化开发的技巧，提升开发效率</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span class="text-sm">35</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-success">
+                                    <i class="fa fa-retweet"></i>
+                                    <span class="text-sm">72</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-danger">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span class="text-sm">180</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-gray-500 dark:text-light-darker hover:text-secondary">
+                                    <i class="fa fa-share"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 热门话题 -->
+                <div class="p-4">
+                    <h3 class="text-lg font-medium">热门话题</h3>
+                    <div class="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+                        <a href="#" class="bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-light-darker py-1 px-2 rounded-full hover:bg-gray-300 dark:hover:bg-dark-light">
+                            #JavaScript
+                        </a>
+                        <a href="#" class="bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-light-darker py-1 px-2 rounded-full hover:bg-gray-300 dark:hover:bg-dark-light">
+                            #Vue.js
+                        </a>
+                        <a href="#" class="bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-light-darker py-1 px-2 rounded-full hover:bg-gray-300 dark:hover:bg-dark-light">
+                            #前端开发
+                        </a>
+                        <a href="#" class="bg-gray-200 dark:bg-dark-lighter text-gray-600 dark:text-light-darker py-1 px-2 rounded-full hover:bg-gray-300 dark:hover:bg-dark-light">
+                            #异步编程
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 推荐用户 -->
+                <div class="p-4">
+                    <h3 class="text-lg font-medium">推荐用户</h3>
+                    <div class="mt-2 space-y-2">
+                        <a href="#" class="flex items-center space-x-3 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
+                            <img src="https://picsum.photos/200/200?random=2" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium truncate">李四</p>
+                                <p class="text-xs text-gray-500 dark:text-light-darker truncate">@lisi</p>
+                            </div>
+                            <button class="bg-secondary hover:bg-secondary/90 text-white font-medium py-1 px-3 rounded-full">
+                                关注
+                            </button>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-lighter">
+                            <img src="https://picsum.photos/200/200?random=3" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium truncate">王五</p>
+                                <p class="text-xs text-gray-500 dark:text-light-darker truncate">@wangwu</p>
+                            </div>
+                            <button class="bg-secondary hover:bg-secondary/90 text-white font-medium py-1 px-3 rounded-full">
+                                关注
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 移动端底部导航 -->
+        <div class="md:hidden fixed bottom-0 left-0 right-0 bg-light-bg dark:bg-dark border-t border-light-border dark:border-dark-lighter py-3 px-6 flex justify-around items-center">
+            <a href="index.html" class="text-secondary">
+                <i class="fa fa-home text-xl"></i>
+            </a>
+            <a href="explore.html" class="text-gray-500 dark:text-light-dark">
+                <i class="fa fa-hashtag text-xl"></i>
+            </a>
+            <button class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center">
+                <i class="fa fa-pencil"></i>
+            </button>
+            <a href="profile.html" class="text-gray-500 dark:text-light-dark">
+                <i class="fa fa-user text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+
+</html>

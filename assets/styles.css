@@ -1,29 +1,135 @@
-/* 自定义样式 */
-.scrollbar-hide::-webkit-scrollbar {
+/* 全局样式 */
+@layer utilities {
+    .content-auto {
+      content-visibility: auto;
+    }
+  }
+  
+  /* 滚动条隐藏 */
+  .scrollbar-hide::-webkit-scrollbar {
     display: none;
-}
-
-.scrollbar-hide {
+  }
+  
+  .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
-}
-
-.hover-scale {
+  }
+  
+  /* 自定义颜色变量 */
+  :root {
+    --light-bg: #ffffff;
+    --dark-bg: #121212;
+    --light-text: #0f172a;
+    --dark-text: #f8fafc;
+    --light-border: #e2e8f0;
+    --dark-border: #2d3748;
+    --gray-100: #f1f5f9;
+    --dark-lighter: #1e1e1e;
+    --secondary: #3b82f6;
+    --success: #10b981;
+    --danger: #ef4444;
+  }
+  
+  /* 基础样式 */
+  body {
+    @apply font-inter antialiased;
+  }
+  
+  /* 动画效果 */
+  .hover-scale {
     transition: transform 0.2s ease-in-out;
-}
-
-.hover-scale:hover {
+  }
+  
+  .hover-scale:hover {
     transform: scale(1.02);
-}
-
-.card-hover {
+  }
+  
+  .card-hover {
     transition: all 0.2s ease-in-out;
-}
-
-.card-hover:hover {
-    background-color: rgba(0,0,0,0.03);
-}
-
-.dark .card-hover:hover {
-    background-color: rgba(255,255,255,0.03);
-}
+  }
+  
+  .card-hover:hover {
+    @apply bg-gray-50 dark:bg-dark-light/50;
+  }
+  
+  /* 平滑过渡效果 */
+  html, body, 
+  .bg-light-bg, .bg-dark,
+  .text-light-text, .text-light,
+  .border-light-border, .border-dark-lighter,
+  .bg-gray-100, .bg-dark-lighter,
+  .hover:bg-gray-100, .dark .hover:bg-dark-lighter {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* 确保所有背景元素都有暗黑模式对应 */
+  .bg-light-bg {
+    @apply bg-white dark:bg-dark;
+  }
+  
+  .bg-gray-100 {
+    @apply bg-gray-100 dark:bg-dark-lighter;
+  }
+  
+  .border-light-border {
+    @apply border-gray-200 dark:border-dark-border;
+  }
+  
+  /* 确保所有文本元素都有暗黑模式对应 */
+  .text-light-text {
+    @apply text-gray-800 dark:text-gray-100;
+  }
+  
+  .text-gray-500 {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+  
+  /* 按钮和交互元素 */
+  button {
+    @apply transition-all duration-200;
+  }
+  
+  /* 顶部导航栏 */
+  .sticky.top-0 {
+    @apply bg-light-bg dark:bg-dark border-b border-light-border dark:border-dark-lighter;
+  }
+  
+  /* 侧边栏 */
+  aside {
+    @apply bg-light-bg dark:bg-dark border-r border-light-border dark:border-dark-lighter;
+  }
+  
+  /* 卡片元素 */
+  article {
+    @apply border-b border-light-border dark:border-dark-lighter;
+  }
+  
+  /* 链接悬停效果 */
+  a:hover {
+    @apply text-secondary;
+  }
+  
+  /* 自定义动画 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* 新增：确保输入框有暗黑模式样式 */
+  input[type="text"] {
+    @apply bg-gray-100 dark:bg-dark-lighter text-light-text dark:text-light border border-light-border dark:border-dark-lighter;
+  }
+  
+  /* 新增：确保一些容器元素有暗黑模式样式 */
+  .bg-gray-100.dark:bg-dark-light {
+    @apply bg-gray-100 dark:bg-dark-light;
+  }
+  
+  /* 新增：确保按钮悬停效果在暗黑模式下正常 */
+  button:hover {
+    @apply bg-gray-200 dark:bg-dark-lighter;
+  }
